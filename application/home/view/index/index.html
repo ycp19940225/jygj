@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-	<head>
-		<meta charset="utf-8">
-		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-		<meta name="keywords" content="" />
-		<meta name="description" content="" />
-		<title>景运管家</title>
-		<link rel="stylesheet" href="css/base.css"  />
-		<link rel="stylesheet" href="css/common.css" />
-		<link rel="stylesheet" href="css/index.css" />
-	</head>
-	<body>
+{extend name="layout"}
+{block name="content"}
 		<!--header-->
 		<div class="header">
 			<div class="logo-div">
-				<img src="images/system/logo.png" class="head-logo-img">
+				<img src="/static/home/images/system/logo.png" class="head-logo-img">
 			</div>
 	  	   	<ul class="main-nav">
 			    <li class="nav-li" >
@@ -56,20 +45,20 @@
 		<div class="banner" id="banner">
 			<ul class="slides">
 		   		<li class="slide">
-		   			<img src="images/system/company.jpg" class="banner-image" />
+		   			<img src="/static/home/images/system/company.jpg" class="banner-image" />
 	   			</li>
 	   			<li class="slide">
-		   			<img src="images/system/company.jpg" class="banner-image" />
+		   			<img src="/static/home/images/system/company.jpg" class="banner-image" />
 	   			</li>
 	   		</ul>
 		</div>
 		<!--banner end-->
 		<!--use-index-->
 		<div class="use-index">
-			<img src="images/system/user_bg.jpg" class="use-bg-image" />
+			<img src="/static/home/images/system/user_bg.jpg" class="use-bg-image" />
 			<div class="col-con">
 				<div class="col-title">
-					<img src="images/system/index_title_01.png" class="index-title-image" />
+					<img src="/static/home/images/system/index_title_01.png" class="index-title-image" />
 				</div>
 				<div class="w1200">
 					<div class="use-item">
@@ -116,26 +105,26 @@
 		<div class="solution-index">
 			<div class="col-con">
 				<div class="col-title">
-					<img src="images/system/index_title_02.png" class="index-title-image" />
+					<img src="/static/home/images/system/index_title_02.png" class="index-title-image" />
 				</div>
 				<div class="w1200 solution">
 					<div class="solution-item solution-01" data-num="0">
-						<img src="images/system/solution_01.png" class="solution-index-bg" />
-						<img src="images/system/solution_01_top.png" class="solution-index-bg-top" />
+						<img src="/static/home/images/system/solution_01.png" class="solution-index-bg" />
+						<img src="/static/home/images/system/solution_01_top.png" class="solution-index-bg-top" />
 						<div class="solution-index-text">
 							<span class="solution-icon"></span>验票购票
 						</div>
 					</div>
 					<div class="solution-item solution-02" data-num="1">
-						<img src="images/system/solution_02.png" class="solution-index-bg" />
-						<img src="images/system/solution_02_top.png" class="solution-index-bg-top" />
+						<img src="/static/home/images/system/solution_02.png" class="solution-index-bg" />
+						<img src="/static/home/images/system/solution_02_top.png" class="solution-index-bg-top" />
 						<div class="solution-index-text">
 							<span class="solution-icon solution-icon-02"></span>电子导览
 						</div>
 					</div>
 					<div class="solution-item solution-03" data-num="2">
-						<img src="images/system/solution_03.png" class="solution-index-bg" />
-						<img src="images/system/solution_03_top.png" class="solution-index-bg-top" />
+						<img src="/static/home/images/system/solution_03.png" class="solution-index-bg" />
+						<img src="/static/home/images/system/solution_03_top.png" class="solution-index-bg-top" />
 						<div class="solution-index-text">
 							<span class="solution-icon solution-icon-03"></span>营销活动
 						</div>
@@ -145,9 +134,9 @@
 						<span class="solution-dia-close"></span>
 						<h3 class="solution-dia-title">验票购票</h3>
 						<div class="solution-dia-images">
-							<img src="images/system/s1.jpg" class="solution-dia-image" />
-							<img src="images/system/s2.jpg" class="solution-dia-image" />
-							<img src="images/system/s3.jpg" class="solution-dia-image" />
+							<img src="/static/home/images/system/s1.jpg" class="solution-dia-image" />
+							<img src="/static/home/images/system/s2.jpg" class="solution-dia-image" />
+							<img src="/static/home/images/system/s3.jpg" class="solution-dia-image" />
 						</div>
 						<p class="solution-dia-text">利用微信支付，在微信端实现门票直销，不再完全依赖OTA，开辟自己的销售渠道。</p>
 					</div>
@@ -155,9 +144,9 @@
 						<span class="solution-dia-close"></span>
 						<h3 class="solution-dia-title">电子导览</h3>
 						<div class="solution-dia-images">
-							<img src="images/system/s4.jpg" class="solution-dia-image" />
-							<img src="images/system/s5.jpg" class="solution-dia-image" />
-							<img src="images/system/s6.jpg" class="solution-dia-image" />
+							<img src="/static/home/images/system/s4.jpg" class="solution-dia-image" />
+							<img src="/static/home/images/system/s5.jpg" class="solution-dia-image" />
+							<img src="/static/home/images/system/s6.jpg" class="solution-dia-image" />
 						</div>
 						<p class="solution-dia-text">利用微信定位、手绘地图、语音解说等众多高科技功能相互组合，打造智慧景区感官盛宴！</p>
 					</div>
@@ -165,9 +154,9 @@
 						<span class="solution-dia-close"></span>
 						<h3 class="solution-dia-title">营销活动</h3>
 						<div class="solution-dia-images">
-							<img src="images/system/s7.jpg" class="solution-dia-image" />
-							<img src="images/system/s8.jpg" class="solution-dia-image" />
-							<img src="images/system/s9.jpg" class="solution-dia-image" />
+							<img src="/static/home/images/system/s7.jpg" class="solution-dia-image" />
+							<img src="/static/home/images/system/s8.jpg" class="solution-dia-image" />
+							<img src="/static/home/images/system/s9.jpg" class="solution-dia-image" />
 						</div>
 						<p class="solution-dia-text">快速生成大转盘、老虎机、刮刮卡等线上活动，辅助日常运营，刺激用户参与，实现景区品牌传播与拉新。</p>
 					</div>
@@ -177,33 +166,33 @@
 		<!--solution-index end-->
 		<!--case-index-->
 		<div class="case-index">
-			<img src="images/system/case_index_bg.png" class="use-bg-image" />
+			<img src="/static/home/images/system/case_index_bg.png" class="use-bg-image" />
 			<div class="col-con">
 				<div class="col-title">
-					<img src="images/system/index_title_03.png" class="index-title-image" />
+					<img src="/static/home/images/system/index_title_03.png" class="index-title-image" />
 				</div>
 				<div class="w1200 case">
 					<div class="case-items">
 						<div class="case-item">
-							<img src="images/upload/case1.jpg" class="case-image" />
+							<img src="/static/home/images/upload/case1.jpg" class="case-image" />
 						</div>
 						<div class="case-item">
-							<img src="images/upload/case1.jpg" class="case-image" />
+							<img src="/static/home/images/upload/case1.jpg" class="case-image" />
 						</div>
 						<div class="case-item">
-							<img src="images/upload/case1.jpg" class="case-image" />
+							<img src="/static/home/images/upload/case1.jpg" class="case-image" />
 						</div>
 						<div class="case-item">
-							<img src="images/upload/case1.jpg" class="case-image" />
+							<img src="/static/home/images/upload/case1.jpg" class="case-image" />
 						</div>
 						<div class="case-item">
-							<img src="images/upload/case1.jpg" class="case-image" />
+							<img src="/static/home/images/upload/case1.jpg" class="case-image" />
 						</div>
 						<div class="case-item">
-							<img src="images/upload/case1.jpg" class="case-image" />
+							<img src="/static/home/images/upload/case1.jpg" class="case-image" />
 						</div>
 						<div class="case-item">
-							<img src="images/upload/case1.jpg" class="case-image" />
+							<img src="/static/home/images/upload/case1.jpg" class="case-image" />
 						</div>
 					</div>
 				</div>
@@ -212,14 +201,14 @@
 		<!--case-index end-->
 		<!--about-index-->
 		<div class="about-index">
-			<img src="images/system/about_index_bg.jpg" class="use-bg-image about-bg-image" />
+			<img src="/static/home/images/system/about_index_bg.jpg" class="use-bg-image about-bg-image" />
 			<div class="col-con">
 				<div class="col-title">
-					<img src="images/system/index_title_04.png" class="index-title-image" />
+					<img src="/static/home/images/system/index_title_04.png" class="index-title-image" />
 				</div>
 				<div class="w1200 case">
 					<div class="about-index-con">
-						<img src="images/system/company.jpg"  class="about-index-company" />
+						<img src="/static/home/images/system/company.jpg"  class="about-index-company" />
 						<div class="about-index-company-text">重庆微景通科技有限公司（简称：微景通）成立于2013年，是国内领先的移动营销解决方案服务商，本着“专注深耕细作”的企业理念，致力于旅游景区移动营销产品的研发与运营。成立至今，依靠优秀的产品和服务能力，微景通已成为国内最大的旅游行业微信第三方平台，接入服务景区超过1000家包括秦始皇帝陵博物院、雁荡山、华清宫、白水洋、鸳鸯溪、金佛山、天柱山、天目湖、台儿庄古城等一大批5A级景区。	
 						</div>
 					</div>
@@ -228,65 +217,8 @@
 		</div>
 		<!--about-index end-->
 		<!--footer-->
-		<div class="footer">
-			<div class="w1200 fn-clear">
-				<div class="footer-con">
-					<div class="footer-title">
-						公司新闻
-						<a href="javascript:;" class="footer-title-more">更多 ></a>
-					</div>
-					<div class="footer-news">
-						<a href="javascript:;" class="footer-new">08/16 恭喜景运管家获得数千万融资</a>
-						<a href="javascript:;" class="footer-new">08/16 恭喜景运管家获得数千万融资</a>
-						<a href="javascript:;" class="footer-new">08/16 恭喜景运管家获得数千万融资</a>
-						<a href="javascript:;" class="footer-new">08/16 恭喜景运管家获得数千万融资</a>
-					</div>
-					<span class="footer-line"></span>
-				</div>
-				<div class="footer-con footer-con-02">
-					<div class="footer-title">
-						解决方案
-					</div>
-					<div class="footer-news">
-						<a href="javascript:;" class="footer-link">智慧景区</a>
-						<a href="javascript:;" class="footer-link">主题公园</a>
-						<a href="javascript:;" class="footer-link">展览展会</a>
-						<a href="javascript:;" class="footer-link">全域旅游</a>
-					</div>
-					<span class="footer-line"></span>
-				</div>
-				<div class="footer-con footer-con-03">
-					<div class="footer-title">
-						友情链接
-					</div>
-					<div class="footer-news">
-						<a href="javascript:;" class="footer-link">国家文化旅游部</a>
-						<a href="javascript:;" class="footer-link">重庆市文化旅游局</a>
-					</div>
-					<span class="footer-line"></span>
-				</div>
-				<div class="footer-con footer-con-04">
-					<div class="footer-title">
-						联系我们
-					</div>
-					<div class="footer-news">
-						<p class="footer-new">客服专线：400-1234-567</p>
-						<p class="footer-new">客服邮箱：123456@jygj.com</p>
-						<p class="footer-addr">地址：上海市金山区廊下镇景乐路228
-      						<p>　　　号7幢N299室</p>
-						</p>
-					</div>
-				</div>
-				<div class="footer-ewm">
-					<img src="images/system/ewm.jpg" class="footer-ewm-image" />
-					<p>扫码关注微信公众号</p>
-				</div>
-			</div>
-			<div class="footer-copy">Copyright ©2013-2018 上海微奥信息科技有限公司 版权所有 沪ICP备15054606号-3</div>
-		</div>
-		<!--footer end-->
-	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-	<script type="text/javascript" src="js/slider.js"></script>
+{/block}
+{block name="js"}
     <script type="text/javascript">
 	$(document).ready(function() {
 		$('#banner').flexslider({
@@ -334,5 +266,5 @@
 		})
 	});
 	</script>
-	</body>
-</html>
+{/block}
+
