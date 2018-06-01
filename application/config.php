@@ -29,7 +29,7 @@ return [
     // 扩展函数文件
     'extra_file_list'        => [
         THINK_PATH . 'helper' . EXT ,
-        APP_PATH . DS.'common'.DS.'helper'.'helper'.DS.EXT
+        APP_PATH .'common'.DS.'helper'.DS.'helper'.EXT
     ],
     // 默认输出类型
     'default_return_type'    => 'html',
@@ -159,7 +159,7 @@ return [
     // 错误显示信息,非调试模式有效
     'error_message'          => '页面错误！请稍后再试～',
     // 显示错误信息
-    'show_error_msg'         => false,
+    'show_error_msg'         => true,
     // 异常处理handle类 留空使用 \think\exception\Handle
     'exception_handle'       => '',
 

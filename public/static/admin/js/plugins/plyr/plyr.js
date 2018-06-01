@@ -16,7 +16,7 @@
         youtube: []
     };
 
-    // Default config
+    // Default webConfig
     var defaults = {
         enabled: true,
         debug: false,

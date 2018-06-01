@@ -1,0 +1,93 @@
+{extend name="layout/layout"}
+{block name="content"}
+<div class="wrapper wrapper-content">
+    <ol class="breadcrumb pull-left">
+        <li><a href="javascript:;">Home</a></li>
+        <li class="active">{$title}</li>
+    </ol>
+    <!-- end breadcrumb -->
+    <!-- begin page-header -->
+    <h1 class="page-header">
+        <small>
+            <button class="btn btn-primary pull-right m-l-20" type="button" onclick=" window.location.href='/admin/config/addOrEdit' ">添加网站配置项</button>
+        </small>
+    </h1>
+    <div class="row">
+        <!-- begin col-12 -->
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse">
+                <div class="panel-heading">
+                    <h4 class="panel-title">{$title}</h4>
+                </div>
+                <div class="panel-body">
+                    <table data-click-to-select="true" class="table table-bordered data-table" data-page-size="20">
+                        <thead>
+                        <tr >
+                            <th data-sortable="true" data-field="id">ID</th>
+                            <th >标识名称</th>
+                            <th >调用key值</th>
+                            <th >前台显示value值</th>
+                            <th data-sortable="true">排序值</th>
+                            <th data-sortable="true">创建时间</th>
+                            <th data-sortable="true">修改时间</th>
+                            <th >操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="data" id="vo"}
+                        <tr >
+                                <td >{$vo.id}</td>
+                                <td>{$vo.name}</td>
+                                <td>{$vo.key}</td>
+                                <td>{$vo.value}</td>
+                                <td>{$vo.sort}</td>
+                                <td>{$vo.created_at}</td>
+                                <td>{$vo.updated_at}</td>
+                                <td>
+                                    <a href="/admin/config/addOrEdit?id={$vo.id}" class="btn btn-danger btn-xs m-2 success" >编辑</a>
+                                    <a href="JavaScript:void(0)" onclick="del({$vo['id']})" class="btn btn-danger btn-xs m-2 delete" >删除</a>
+                                </td>
+                        </tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+        <!-- end col-12 -->
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script>
+    /**
+     * 删除
+     * @param i
+     */
+    function del(i) {
+        //询问框
+        layer.confirm('是否删除？', {
+            title:'确认操作',
+            btn: ['是','否'] //按钮
+        }, function(){
+            var _token =  "{csrf_token()}";
+            var data = {
+                id:i,
+                _token: _token
+            };
+            console.log(data);
+            $.post("{url('admin/admin/delete')}",data,function (res) {
+                console.log(res);
+                if(res['code'] === 'success'){
+                    layer.msg(res['msg'],{icon: 6});
+                }else{
+                    layer.msg(res['msg'],{icon:5});
+                }
+            },"json");
+        });
+    }
+
+</script>
+{/block}

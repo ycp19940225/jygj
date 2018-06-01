@@ -20,6 +20,7 @@
     {load href='/static/admin/css/font-awesome.min93e3.css'}
     {load href='/static/admin/css/animate.min.css'}
     {load href='/static/admin/css/style.min862f.css'}
+    {load href='/static/admin/css/plugins/bootstrap-table/bootstrap-table.min.css'}
     {block name="css"}{/block}
 </head>
 
@@ -34,6 +35,25 @@
     {load href="/static/admin/js/contabs.min.js"}
     {load href="/static/admin/js/plugins/pace/pace.min.js"}
     {load href="/static/admin/js/content.min.js"}
+    {load href="/static/admin/js/plugins/bootstrap-table/bootstrap-table.min.js"}
+    {load href="/static/admin/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"}
+    {load href="/static/admin/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"}
     {block name="js"}{/block}
+    <script>
+        $(document).ready(function(){
+            $(".data-table").bootstrapTable({
+                search: true,
+                idField:'id',
+                sortOrder: "desc",
+                pagination: false,
+                showColumns: true,
+                showRefresh: false,
+                showToggle: false,
+                locale: "zh-CN",
+                striped: false
+            });
+        });
+    </script>
+
 </body>
 </html>

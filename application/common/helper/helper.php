@@ -13,14 +13,10 @@ use think\Request;
  *
  * @param string $file 所要加载的资源
  */
-if ( ! function_exists('loadStatic'))
+if ( ! function_exists('test'))
 {
-    function loadStatic($file)
+    function test()
     {
-        if( ! $file) return Request::instance()->root().'/static/';
-        $realFile = ROOT_PATH.'/static/'.$file;
-        if( ! file_exists($realFile)) return '';
-        $filemtime = filemtime($realFile);
-        return Request::instance()->root().'/static/'.$file.'?v='.$filemtime;
+        return 1;
     }
 }
