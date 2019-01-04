@@ -1,0 +1,59 @@
+{extend name="layout/layout"}
+{block name="content"}
+    <ol class="breadcrumb pull-left">
+        <li><a href="javascript:;">Home</a></li>
+        <li class="active">{$title}</li>
+    </ol>
+    <!-- end breadcrumb -->
+    <!-- begin page-header -->
+    <h1 class="page-header">
+        <small>
+            <button class="btn btn-primary pull-right m-l-20" type="button" onclick=" javascript:history.go(-1) ">返回列表</button>
+        </small>
+    </h1>
+    <div class="row">
+        <!-- begin col-12 -->
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse">
+                <div class="panel-heading">
+                    <h4 class="panel-title">{$title}</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <form action="/index.php/admin/article_cat/addOrEditDo" class="form-horizontal form_need_validate" role="form" method="post">
+                            <input type="hidden" name="id" value="{$data.id ? $data.id:''}">
+                            <div class="form-group">
+                                <label for="name" class="col-xs-4 control-label">上级分类<font color="red">*</font></label>
+                                <div class="col-xs-5">
+                                    {:buildSelect($catData,'parent_id','id','name',isset($data['parent_id']) ? $data['parent_id']:'',isset($data['id']) ? $data['id']:'')}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="col-xs-4 control-label">分类名称<font color="red">*</font></label>
+                                <div class="col-xs-5">
+                                    <input type="text" class="form-control" id="name" name="name" value="{$data.name ? $data.name:''}" placeholder="请输入显示名称" required>
+                                </div>
+                            </div>
+                            <div class="col-md-offset-5" >
+                                <button type="submit" class="btn btn-success m-2" id="submit" name="repass">提交</button>
+                                <button type="reset" class="btn btn-success m-2" id="reset" name="repass">重置</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+        <!-- end col-12 -->
+    </div>
+{/block}
+{block name="js"}
+<script>
+    $(function () {
+            $("select option[value='']").text('顶级分类');
+            $("select option[value='']").val(0);
+    });
+</script>
+{/block}

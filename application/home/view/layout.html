@@ -1,30 +1,92 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+<!--<script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?2dc2d800a5dbba4222c1a71b41d36035"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script>-->
 <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <title>景运管家</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{$config['web_logo']['val'] ? $config['web_logo']['val']:''}" />
+    <meta name="keywords" content="{$pageKeyWords ? $pageKeyWords:$config['pageKeywords']['val']}" />
+    <meta name="description" content="{$pageDesc ? $pageDesc:$config['pageDescription']['val']}" />
+    <title>{$pageTitle ? $pageTitle:$config['pageTitle']['val']}</title>
     {load href="/static/home/css/base.css"}
     {load href="/static/home/css/common.css"}
+    {if condition="request()->action() neq 'index'"}
+    {load href="/static/home/css/other.css"}
+    {/if}
+    {if condition="request()->action() eq 'index'"}
     {load href="/static/home/css/index.css"}
+    {/if}
+    {if condition="request()->action() neq 'index'"}
+    {load href="/static/home/css/single.css"}
+    {/if}
     {block name="css"}{/block}
+
+
+    <!--百度统计代码-->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?2dc2d800a5dbba4222c1a71b41d36035";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <!--<script>-->
+        <!--var _hmt = _hmt || [];-->
+        <!--(function() {-->
+            <!--var hm = document.createElement("script");-->
+            <!--hm.src = "https://hm.baidu.com/hm.js?b44c1c497b1a28a284a6a576c7b49952";-->
+            <!--var s = document.getElementsByTagName("script")[0];-->
+            <!--s.parentNode.insertBefore(hm, s);-->
+        <!--})();-->
+    <!--</script>-->
+
+    <!--<script>(function() {var _53code = document.createElement("script");_53code.src = "https://tb.53kf.com/code/code/10175911/1";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(_53code, s);})();</script>-->
+    <!--<script>-->
+        <!--(function(b,a,e,h,f,c,g,s){b[h]=b[h]||function(){(b[h].c=b[h].c||[]).push(arguments)};-->
+            <!--b[h].s=!!c;g=a.getElementsByTagName(e)[0];s=a.createElement(e);-->
+            <!--s.src="//s.union.360.cn/"+f+".js";s.defer=!0;s.async=!0;g.parentNode.insertBefore(s,g)-->
+        <!--})(window,document,"script","_qha",268928,false);-->
+    <!--</script>-->
 </head>
 <body>
+<div class="header">
+    <div class="logo-div">
+        <img src="/static/home/images/system/logo.png" class="head-logo-img">
+    </div>
+    <ul class="main-nav">
+        {volist name="navList" id="vo"}
+        {if condition="$vo.parent_id eq 0 "}
+        <li class="nav-li" >
+            <a class="nav-link" href="<?php if($vo['url']=='/'){echo 'javascript:void(0)';}else{ echo $vo['url'];}?>">{$vo['name']}</a>
+            <div class="second-links">
+                {volist name="navList" id="v1"}
+                {if condition="$v1.parent_id eq $vo.id "}
+                <a href="{:$v1['url']}" class="second-link" {if condition="$v1['id'] eq 14 OR $v1['id'] eq 16"}rel="nofollow"{/if}>{$v1['name']}</a>
+                {/if}
+                {/volist}
+            </div>
+        </li>
+        {/if}
+        {/volist}
+    </ul>
+    <!--<div class="header-login">-->
+        <!--<a href="http://mp.jingyunguanjia.com/" class="header-login-link" rel="nofollow">登录</a>-->
+    <!--</div>-->
+</div>
+
 {block name="content"}{/block}
 <div class="footer">
     <div class="w1200 fn-clear">
         <div class="footer-con">
             <div class="footer-title">
-                公司新闻
-                <a href="javascript:;" class="footer-title-more">更多 ></a>
+                行业动态
+                <a href="/news.html" class="footer-title-more">更多 ></a>
             </div>
             <div class="footer-news">
-                <a href="javascript:;" class="footer-new">08/16 恭喜景运管家获得数千万融资</a>
-                <a href="javascript:;" class="footer-new">08/16 恭喜景运管家获得数千万融资</a>
-                <a href="javascript:;" class="footer-new">08/16 恭喜景运管家获得数千万融资</a>
-                <a href="javascript:;" class="footer-new">08/16 恭喜景运管家获得数千万融资</a>
+                {volist name="article" id="vo"}
+                <a href="/news/{$vo.id}.html" class="footer-new">{$vo.title}</a>
+                {/volist}
             </div>
             <span class="footer-line"></span>
         </div>
@@ -33,20 +95,10 @@
                 解决方案
             </div>
             <div class="footer-news">
-                <a href="javascript:;" class="footer-link">智慧景区</a>
-                <a href="javascript:;" class="footer-link">主题公园</a>
-                <a href="javascript:;" class="footer-link">展览展会</a>
-                <a href="javascript:;" class="footer-link">全域旅游</a>
-            </div>
-            <span class="footer-line"></span>
-        </div>
-        <div class="footer-con footer-con-03">
-            <div class="footer-title">
-                友情链接
-            </div>
-            <div class="footer-news">
-                <a href="javascript:;" class="footer-link">国家文化旅游部</a>
-                <a href="javascript:;" class="footer-link">重庆市文化旅游局</a>
+                <a href="/application_wisdom.html" class="footer-link">智慧景区</a>
+                <a href="/application_theme.html" class="footer-link">主题公园</a>
+                <a href="/application.html" class="footer-link">展览展会</a>
+                <a href="/application_tourism.html" class="footer-link">全域旅游</a>
             </div>
             <span class="footer-line"></span>
         </div>
@@ -55,23 +107,74 @@
                 联系我们
             </div>
             <div class="footer-news">
-                <p class="footer-new">客服专线：400-1234-567</p>
-                <p class="footer-new">客服邮箱：123456@jygj.com</p>
-                <p class="footer-addr">地址：上海市金山区廊下镇景乐路228
-                <p>　　　号7幢N299室</p>
-                </p>
+                <p class="footer-new">{$config['tel']['name'] ? $config['tel']['name']:''}：{$config['tel']['val'] ? $config['tel']['val']:''}</p>
+                <p class="footer-new">{$config['email']['name']}：{$config['email']['val']}</p>
+                <p class="footer-addr">{$config['address']['name']}：{$config['address']['val']}</p>
             </div>
         </div>
         <div class="footer-ewm">
-            <img src="images/system/ewm.jpg" class="footer-ewm-image" />
-            <p>扫码关注微信公众号</p>
+            <img src="{$config['qr_code']['val']}" class="footer-ewm-image" />
+            <p>{$config['qr_code']['name']}</p>
         </div>
+
     </div>
-    <div class="footer-copy">Copyright ©2013-2018 上海微奥信息科技有限公司 版权所有 沪ICP备15054606号-3</div>
+    <div class="friend">
+        <span>友情链接：</span>
+        {volist name="$config['links']" id="vo"}
+        <a href="{$vo['val']}" class="friend-link" >{$vo['name']}</a>
+        {/volist}
+    </div>
+    <div class="footer-copy">{$config['copyright']['name']}&nbsp;{$config['copyright']['val']}</div>
+</div>
+<div class="code-content">
+    <!--<a class="qq" href="tencent://message/?uin=2752077598&Site=2752077598&Menu=yes"><span></span></a>-->
+    <!--<a class="weixin" href="javascript:void(0)"><span></span><i></i></a>-->
+    <a class="tell" href="javascript:void(0)"><span></span>
+        <i>
+            {$config['tel']['val'] ? $config['tel']['val']:''}
+        </i>
+    </a>
+    <a class="back-top" href="javascript:void(0)" data-y="0"><span></span></a>
 </div>
 <!--footer end-->
 {load href="/static/home/js/jquery-1.8.2.min.js"}
 {load href="/static/home/js/slider.js"}
 {block name="js"}{/block}
+
+<script>
+
+    //	返回顶部
+    $('.cooper-list li:last-child').addClass('no-right');
+    $('.cooper-con-list li:last-child').addClass('no-right');
+    var navListAObj = $('.nav-list li a,.back-top');
+    navListAObj.click(function() {
+        var height = $(this).attr('data-y');
+        $("body,html").stop().animate({
+            scrollTop: height
+        });
+    });
+
+     $(document).ready(function() {
+            //鼠标悬浮在导航上下拉
+            $('.nav-li').hover(function(){
+                var _this =$(this);
+                if($(_this).hasClass('active')){
+                    return false;
+                }else{
+                    $('.nav-li.active').removeClass('active');
+                    $(_this).addClass('active');
+                    $('.second-links').stop().slideUp();
+                    $(_this).find('.second-links').stop().slideDown();
+                }
+
+            });
+            $('.second-links').hover(function(){
+
+            },function(){
+                $(this).stop().slideUp();
+            });
+
+        });
+</script>
 </body>
 </html>

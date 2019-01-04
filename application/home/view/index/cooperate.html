@@ -1,0 +1,151 @@
+{extend name="layout"}
+{block name="content"}
+<div class="header-zw"></div>
+<!--header end-->
+
+<!--sbanner-->
+<div class="sbanner">
+    <img src="/static/home/images/system/coo-bg1.png" class="sbanner-image"/>
+    <div class="sbanner-con">
+        <p class="sbanner-title">COOPERATE</p>
+        <a href="javascript:;" class="sbanner-btn">合作渠道</a>
+    </div>
+</div>
+<!--sbanner end-->
+
+<!--advance-->
+<div class="advance">
+    <div class="advance-con">
+        <p class="advance-title">渠道八大优势</p>
+        <div class="advance-list">
+            <div class="advance-list-one">
+                <img src="/static/home/images/system/coo_1.png" class="advance-img">
+                <p class="advance-text">市场巨大</p>
+            </div>
+            <div class="advance-list-one">
+                <img src="/static/home/images/system/coo_2.png" class="advance-img">
+                <p class="advance-text">丰厚奖励</p>
+            </div>
+            <div class="advance-list-one">
+                <img src="/static/home/images/system/coo_3.png" class="advance-img">
+                <p class="advance-text">售后支持</p>
+            </div>
+            <div class="advance-list-one">
+                <img src="/static/home/images/system/coo_7.png" class="advance-img">
+                <p class="advance-text">培训支持</p>
+            </div>
+            <div class="advance-list-one">
+                <img src="/static/home/images/system/coo_4.png" class="advance-img">
+                <p class="advance-text">功能丰富</p>
+            </div>
+            <div class="advance-list-one">
+                <img src="/static/home/images/system/coo_5.png" class="advance-img">
+                <p class="advance-text">技术支持</p>
+            </div>
+            <div class="advance-list-one">
+                <img src="/static/home/images/system/coo_6.png" class="advance-img">
+                <p class="advance-text">运营支持</p>
+            </div>
+            <div class="advance-list-one">
+                <img src="/static/home/images/system/coo_8.png" class="advance-img">
+                <p class="advance-text">区域保护</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--advance end-->
+
+<!--cooperate-->
+<div class="cooperate">
+    <div class="cooperate-con">
+        <p class="advance-title">合作流程</p>
+        <div class="cooperate-list">
+            <div class="cooperate-list-one">
+                <img src="/static/home/images/system/coo_lo1.png" class="cooperate-img">
+                <p class="cooperate-text">线上沟通</p>
+            </div>
+            <div class="cooperate-list-one">
+                <img src="/static/home/images/system/coo_lo3.png" class="cooperate-img">
+                <p class="cooperate-text">线下审核</p>
+            </div>
+            <div class="cooperate-list-one">
+                <img src="/static/home/images/system/coo_lo2.png" class="cooperate-img">
+                <p class="cooperate-text">洽谈方案</p>
+            </div>
+            <div class="cooperate-list-one">
+                <img src="/static/home/images/system/coo_lo4.png" class="cooperate-img">
+                <p class="cooperate-text">签约合作</p>
+            </div>
+            <div class="cooperate-list-one">
+                <img src="/static/home/images/system/coo_lo6.png" class="cooperate-img">
+                <p class="cooperate-text">售后支持</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--cooperate end-->
+<!--plan-->
+<div class="plan">
+    <div class="plan-con">
+        <h2 class="plan-title">合伙人计划</h2>
+        <p class="plan-text">
+            “合伙人计划”是景运管家核心发展战略，整体渠道结构由市场、产品、运营、技术、客服、培训六大核心部门组成。景运管家渠道团队是由景运管家一支来自互联网+传统旅游行业的专业人士组成的精英团队；由原先的“0”经过5年时间打磨产品，到现在的完整的景区、电商、运营、数据功能全支持。景运管家用自身的热诚、专业、真挚，为全国代理商提供产品、资源、培训等各全方位支持。</p>
+        <p class="plan-text">
+            景运管家“合伙人计划”致力于寻找志同道合的伙伴，用合伙人的形式和代理商共同成长，协助代理商快速成长为当地最具影响力的旅游企业移动电商赋能专家，以实现旅游企业、合伙人三方共赢的局面。</p>
+        <p class="big-title">彼此成就！合作共赢！</p>
+        <div class="condition">
+            <h2 class="condition-title">合作条件</h2>
+            <p class="condition-text">(1)认可移动互联网和旅游行业Saas的未来发展前景</p>
+            <p class="condition-text">(2)拥有一定的互联网或旅游行业从业经验，对当前行业有清晰的认识</p>
+            <p class="condition-text">(3)在本地有较多的旅游行业客户资源及人脉资源</p>
+            <p class="condition-text">(4)目标代理的区域，代理商名额未满</p>
+        </div>
+    </div>
+</div>
+
+<!--plan end-->
+<!--consult-->
+<div class="consult">
+    <div class="consult-con">
+        <h2 class="consult-title">共享千亿级市场</h2>
+        <center>
+            <button class="consult-now">立即咨询</button>
+        </center>
+    </div>
+</div>
+<!--consult end-->
+{/block}
+{block name="js"}
+<script type="text/javascript">
+    $(document).ready(function () {
+        //鼠标悬浮在导航上下拉
+        $('.nav-li').hover(function () {
+            var _this = $(this);
+            if ($(_this).hasClass('active')) {
+                return false;
+            } else {
+                $('.nav-li.active').removeClass('active');
+                $(_this).addClass('active');
+                $('.second-links').stop().slideUp();
+                $(_this).find('.second-links').stop().slideDown();
+            }
+
+        });
+        $('.second-links').hover(function () {
+
+        }, function () {
+            $(this).stop().slideUp();
+        });
+
+        //立即咨询，弹出百度商桥留言板
+        $(function () {
+            $(".consult-now").click(function () {
+                if ($('#nb_invite_ok').length > 0) {
+                    $('#nb_invite_ok').click();
+                }
+            });
+        });
+
+    });
+</script>
+{/block}

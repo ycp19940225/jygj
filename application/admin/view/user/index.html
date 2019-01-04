@@ -1,0 +1,107 @@
+{extend name="layout/layout"}
+{block name="content"}
+<div class="wrapper wrapper-content">
+    <ol class="breadcrumb pull-left">
+        <li><a href="javascript:;">Home</a></li>
+        <li class="active">{$title}</li>
+    </ol>
+    <!-- end breadcrumb -->
+    <!-- begin page-header -->
+    <h1 class="page-header">
+        <small>
+            <button class="btn btn-primary pull-right m-l-20" type="button" onclick=" window.location.href='/index.php/admin/user/addOrEdit' ">添加管理员</button>
+        </small>
+    </h1>
+    <div class="row">
+        <!-- begin col-12 -->
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse">
+                <div class="panel-heading">
+                    <h4 class="panel-title">{$title}</h4>
+                </div>
+                <div class="panel-body">
+                   {if condition="session('msg')"}
+                    <div class="alert alert-info" id="msg">
+                        {:session('msg')}
+                    </div>
+                    {/if}
+                    <table data-click-to-select="true" class="table table-bordered data-table" data-page-size="20">
+                        <thead>
+                        <tr >
+                            <th data-sortable="true" data-field="id" ><span style="color:#3fb205">ID</span></th>
+                            <th >登录名</th>
+                            <th data-sortable="true"><span style="color:#3fb205">添加时间</span></th>
+                            <th >操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="data" id="vo"}
+                        <tr id="data-list-{$vo.id}">
+                                <td>{$vo.id}</td>
+                                <td>{$vo.name}</td>
+                                <td>{$vo.created_at}</td>
+                                <td>
+                                    <a href="/index.php/admin/user/addOrEdit?id={$vo.id}" class="btn btn-success btn-xs " >编辑</a>
+                                    {if condition="$vo.deleted_at eq 1"}
+                                    <a href="JavaScript:void(0)" onclick="del({$vo['id']},9)" class="btn btn-danger btn-xs m-2 delete" >删除</a>
+                                    {else/}
+                                    <a href="JavaScript:void(0)" onclick="del({$vo['id']},1)" class="btn btn-info btn-xs m-2 delete" >恢复</a>
+                                    {/if}
+                                </td>
+                        </tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+                    {$data->render()}
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+        <!-- end col-12 -->
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script>
+    $(function () {
+        setTimeout(function () {
+            $("#msg").hide();
+        }, 6000);
+    });
+    /**
+     * 删除
+     * @param i
+     * @param v
+     */
+    function del(i,v) {
+        var title;
+        if(v == 9){
+           title = '删除';
+        }
+        if(v == 1){
+            title = '恢复';
+        }
+        //询问框
+        layer.confirm('是否'+title+'?', {
+            title:'确认操作',
+            btn: ['是','否'] //按钮
+        }, function(){
+            var data = {
+                id:i,
+                deleted_at:v
+            };
+            $.post("/index.php/admin/user/changeStatus",data,function (res) {
+                if(res['status'] == true){
+                    layer.msg(res['msg'],{icon:1});
+                    setTimeout(function () {
+                        location.reload();
+                    },2000);
+                }else{
+                    layer.msg(res['msg'],{icon:5});
+                }
+            },"json");
+        });
+    }
+</script>
+{/block}

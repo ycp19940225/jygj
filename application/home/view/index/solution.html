@@ -1,0 +1,54 @@
+{extend name="layout"}
+{block name="content"}
+<div class="header-zw"></div>
+		<!--sbanner-->
+		<div class="sbanner">
+			<img src="/static/home/images/system/sbanner_solution.jpg" class="sbanner-image" />
+			<div class="sbanner-con">
+				<p class="sbanner-title">SOLUTION</p>
+				<a  href="javascript:;" class="sbanner-btn">解决方案</a>
+			</div>
+		</div>
+		<!--sbanner end-->
+		<!--solution-message end-->
+		<div class="solution-message">
+			<ul class="cl-ul">
+				{volist name="data" id="vo"}
+				<li>
+					<a href="/solution/{$vo['id']}.html">
+						<div class="shade"><u></u></div>
+						<img class="img-responsive" src="{$vo['img']}" alt="行业门户网站建设解决方案">
+						<p><strong>{$vo['title']}</strong>{$vo['description']}</p>
+						<div class="bg"><u></u></div>
+					</a>
+				</li>
+				{/volist}
+		    </ul>
+		</div>
+        <!--solution-message end-->
+{/block}
+{block name="js"}
+	    <script type="text/javascript">
+		$(document).ready(function() {
+			//鼠标悬浮在导航上下拉
+			$('.nav-li').hover(function(){
+				var _this =$(this);
+				if($(_this).hasClass('active')){
+					return false;
+				}else{
+					$('.nav-li.active').removeClass('active');
+					$(_this).addClass('active');
+					$('.second-links').stop().slideUp();
+					$(_this).find('.second-links').stop().slideDown();
+				}
+				
+			});
+			$('.second-links').hover(function(){
+				
+			},function(){
+				$(this).stop().slideUp();
+			});
+			
+		});
+		</script>
+{/block}

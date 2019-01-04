@@ -21,33 +21,60 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <form action="" class="form-horizontal form_need_validate" role="form" method="post">
+                        <form action="/index.php/admin/config/addOrEditDo" class="form-horizontal form_need_validate" role="form" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="id" value="{$configData.id ? $configData.id:''}">
                             <div class="form-group">
-                                <label for="name" class="col-xs-4 control-label">显示名称</label>
+                                <label for="name" class="col-xs-4 control-label">显示名称<font color="red">*</font></label>
                                 <div class="col-xs-5">
                                     <input type="text" class="form-control" id="name" name="name" value="{$configData.name ? $configData.name:''}" placeholder="请输入显示名称" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="name" class="col-xs-4 control-label">唯一key值</label>
+                                <label for="name" class="col-xs-4 control-label">唯一key值<font color="red">*</font></label>
                                 <div class="col-xs-5">
                                     <input type="text" class="form-control" id="key" name="key" value="{$configData.key ? $configData.key:''}" placeholder="请输入唯一key值" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="name" class="col-xs-4 control-label">显示值</label>
+                                <label for="name" class="col-xs-4 control-label">数据类型<font color="red">*</font></label>
+                                <div class="col-xs-2">
+                                    <select class="form-control m-b" name="type" id="type">
+                                        <option value="1" {if condition="isset($configData.type) AND $configData.type eq 1"} selected="selected"{/if}>文本</option>
+                                        <option value="2" {if condition="isset($configData.type) AND $configData.type eq 2"} selected="selected"{/if}>图片</option>
+                                        <option value="3" {if condition="isset($configData.type) AND $configData.type eq 3"} selected="selected"{/if}>友情链接</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group" id="show_value">
+                                <label for="name" class="col-xs-4 control-label">显示值<font color="red">*</font></label>
                                 <div class="col-xs-5">
-                                    <input type="text" class="form-control" id="value" name="value" value="{$configData.value ? $configData.value:''}" placeholder="请输入显示值" required>
+                                    <textarea class="form-control" id="value" name="value" value="" placeholder="请输入显示值" required>
+                                        {$configData.value ? $configData.value:''}
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group" id="uploadImg">
+                                <label class="col-xs-4 control-label">上传图片<font color="red">*</font></label>
+                                <div class="col-xs-5">
+                                    <div id="image-preview" style="border: 1px solid #ccc; width:100px; height: 100px; background: rgb(222, 222, 222)">
+                                        <img id="img" src="{$configData['value'] ? $configData['value']:''}" alt="" style="width:100px; height: 100px;">
+                                    </div>
+                                    <p>
+                                        <a href="javascript:;" class="file">
+                                            <input type="file" id="image-file" name="pic" value="{$configData['value'] ? $configData['value']:''}">
+                                        </a>
+                                    </p>
+                                    <p id="file-info"></p>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="name" class="col-xs-4 control-label">类型</label>
+                                <label for="sort" class="col-xs-4 control-label">排序</label>
                                 <div class="col-xs-5">
+                                    <input type="number" class="form-control" id="sort" name="sort" value="{$configData.sort ? $configData.sort:''}" placeholder="请输入排序,值越大,越靠前" >
                                 </div>
                             </div>
                             <div class="col-md-offset-5" >
-                                <button type="button" class="btn btn-success m-2" id="submit" name="repass">提交</button>
+                                <button type="submit" class="btn btn-success m-2" id="submit" name="repass">提交</button>
                                 <button type="reset" class="btn btn-success m-2" id="reset" name="repass">重置</button>
                             </div>
                         </form>
@@ -59,4 +86,32 @@
         </div>
         <!-- end col-12 -->
     </div>
+{/block}
+{block name='js'}
+{load href="/static/common/upload.js"}
+<script>
+    $(function(){
+        upload.init();
+        var val = $("#type").val();
+        if(val != 2){
+            $("#uploadImg").hide();
+        }
+        if(val == 2){
+            $("#show_value").hide();
+        }
+        /**
+         * 图片
+         */
+        $("#type").change(function () {
+            var val = $(this).val();
+            if(val == 2){
+                $("#uploadImg").show();
+                $("#show_value").hide();
+            }else{
+                $("#show_value").show();
+                $("#uploadImg").hide();
+            }
+        });
+    });
+</script>
 {/block}

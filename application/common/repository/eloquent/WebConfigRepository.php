@@ -9,8 +9,8 @@
 namespace app\common\repository\eloquent;
 
 
+
 use app\common\models\WebConfig;
-use think\exception\DbException;
 
 class WebConfigRepository
 {
@@ -29,86 +29,54 @@ class WebConfigRepository
 
     /**
      * @desc 获取数据集
-     * @param string $fields
-     * @return \Exception|false|\PDOStatement|string|\think\Collection|DbException
      */
-    public function getAll($fields = "*")
+    public function getAll($fields = "*",$limit=10)
     {
         return $this->configModel->field($fields)
-            ->where(['deleted_at'=>0])
             ->order('id desc')
-            ->select();
+            ->paginate($limit);
     }
 
     /**
      * @desc 获取单条数据
-     * @param $value
-     * @param string $fields
-     * @param string $field
-     * @return \Exception|false|\PDOStatement|string|\think\Collection|DbException
      */
     public function getOne($value,$fields="*",$field = 'id')
     {
-        try {
-            return $this->configModel->field($fields)
-                ->where(['deleted_at'=>0,$field=>$value])
-                ->find();
-        }  catch (DbException $e) {
-            return $e;
-        }
+        return $this->configModel->field($fields)
+            ->where(['deleted_at' => 1, $field => $value])
+            ->find();
     }
 
     /**
      * @desc 数据添加
-     * @param $data
-     * @return \Exception|false|\PDOStatement|string|\think\Collection|DbException
      */
-    public function save($data)
+    public function saveData($data)
     {
-        try {
-            return $this->configModel->save($data);
-        }  catch (DbException $e) {
-            return $e;
-        }
+        return $this->configModel->save($data);
     }
     /**
      * @desc 数据更新
-     * @param $data
-     * @return \Exception|false|\PDOStatement|string|\think\Collection|DbException
      */
-    public function update($data)
+    public function updateData($data)
     {
-        try {
-            return $this->configModel->where(['id'=>$data['id']])->save($data);
-        }  catch (DbException $e) {
-            return $e;
-        }
+        return $this->configModel->where(['id'=>$data['id']])->update($data);
     }
 
     /**
      * @desc 删除单条数据
      */
-    public function delete($id)
+    public function deleteData($id)
     {
-       return $this->configModel->where('id',$id)->update(['deleted_at'=>9]);
+        return $this->configModel->where('id',$id)->update(['deleted_at'=>9]);
     }
 
     /**
      * @desc 通过字段获取数据集
-     * @param $field
-     * @param $val
-     * @param string $fields
-     * @return \Exception|false|\PDOStatement|string|\think\Collection|DbException
      */
     public function getAllByField($field,$val,$fields="*")
     {
-        try {
-            return $this->configModel->field($fields)
-                ->where($field,$val)
-                ->update(['deleted_at'=>1])
-                ->select();
-        }  catch (DbException $e) {
-            return $e;
-        }
+        return $this->configModel->field($fields)
+            ->where(['deleted_at'=>1,$field=>$val])
+            ->select();
     }
 }

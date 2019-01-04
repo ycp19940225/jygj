@@ -8,8 +8,8 @@
                     <span><img alt="image" class="img-circle" src="/static/admin/img/profile_small.jpg" /></span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
-                               <span class="block m-t-xs"><strong class="font-bold">Beaut-zihan</strong></span>
-                                <span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>
+                               <span class="block m-t-xs"><strong class="font-bold">{:session('admin')['name']}</strong></span>
+                                <!--<span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>-->
                                 </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
@@ -22,7 +22,7 @@
                         <li><a class="J_menuItem" href="mailbox.html">信箱</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html">安全退出</a>
+                        <li><a href="/index.php/admin/login/logout">安全退出</a>
                         </li>
                     </ul>
                 </div>
@@ -39,19 +39,22 @@
                 </a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a class="J_menuItem" href="/admin/config/index" data-index="0">网站配置</a>
+                        <a class="J_menuItem" href="/index.php/admin/article/index">文章列表</a>
                     </li>
                     <li>
-                        <a class="J_menuItem" href="{url('admin/index/main')}">主页示例二</a>
+                        <a class="J_menuItem" href="/index.php/admin/nav/index">栏目列表</a>
                     </li>
                     <li>
-                        <a class="J_menuItem" href="index_v3.html">主页示例三</a>
+                        <a class="J_menuItem" href="/index.php/admin/article/cases">成功案例</a>
                     </li>
                     <li>
-                        <a class="J_menuItem" href="index_v4.html">主页示例四</a>
+                        <a class="J_menuItem" href="/index.php/admin/config/index" data-index="0">网站配置</a>
                     </li>
                     <li>
-                        <a href="index_v5.html" target="_blank">主页示例五</a>
+                        <a class="J_menuItem" href="/index.php/admin/article_cat/index">文章分类</a>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="/index.php/admin/user/index">管理员列表</a>
                     </li>
                 </ul>
 

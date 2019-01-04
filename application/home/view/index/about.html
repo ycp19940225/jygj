@@ -1,60 +1,11 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-	<head>
-		<meta charset="utf-8">
-		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-		<meta name="keywords" content="" />
-		<meta name="description" content="" />
-		<title>景运管家</title>
-		<link rel="stylesheet" href="css/base.css"  />
-		<link rel="stylesheet" href="css/common.css" />
-		<link rel="stylesheet" href="css/other.css" />
-	</head>
-	<body>
+{extend name="layout"}
+{block name="content"}
 		<!--header-->
-		<div class="header">
-			<div class="logo-div">
-				<img src="images/system/logo.png" class="head-logo-img">
-			</div>
-	  	   	<ul class="main-nav">
-			    <li class="nav-li" >
-			    	<a class="nav-link nav-link-active" href="#page1">首页</a>
-			    </li>
-			    <li class="nav-li" >
-			    	<a class="nav-link" href="#page2">产品与服务</a>
-			    	<div class="second-links">
-			    		<a href="javascript:;" class="second-link">公众号</a>
-			    		<a href="javascript:;" class="second-link">小程序</a>
-			    	</div>
-			    </li>
-			    <li class="nav-li" >
-			    	<a class="nav-link" href="#page4">公司简介</a>
-			    	<div class="second-links">
-			    		<a href="javascript:;" class="second-link">公众号</a>
-			    		<a href="javascript:;" class="second-link">小程序</a>
-			    	</div>
-			    </li>
-			    <li class="nav-li" >
-			    	<a class="nav-link" href="#page5">公司动态</a>
-			    	<div class="second-links">
-			    		<a href="javascript:;" class="second-link">公众号</a>
-			    		<a href="javascript:;" class="second-link">小程序</a>
-			    	</div>
-			    </li>
-			    <li class="nav-li" >
-			    	<a class="nav-link" href="#page6">联系我们</a>
-			    </li>
-		   </ul>
-		   <div class="header-login">
-		   		<a href="javascript:;" class="header-login-link">登录</a>
-		   		<a href="javascript:;" class="header-login-link header-login-link-reg">注册</a>
-		   </div>
-  	    </div>
   	    <div class="header-zw"></div>
 		<!--header end-->
 		<!--sbanner-->
 		<div class="sbanner">
-			<img src="images/system/sbanner_about.jpg" class="sbanner-image" />
+			<img src="/static/home/images/system/sbanner_about.jpg" class="sbanner-image" />
 			<div class="sbanner-con">
 				<p class="sbanner-title">ABOUT US</p>
 				<a  href="javascript:;" class="sbanner-btn">关于我们</a>
@@ -70,101 +21,17 @@
 				</div>
 				<div class="about-company-con fn-clear">
 					<div class="about-company-text">
-						<p><span class="big-text">重庆微景通科技有限公司</span>（简称：微景通）成立于2013年，是国内领先的移动营销解决方案服务商，本着“专注深耕细作”的企业理念，致力于旅游景区移动营销产品的研发与运营。</p>
-						<br />
-						<p>成立至今，依靠优秀的产品和服务能力，微景通已成为国内最大的旅游行业微信第三方平台，接入服务景区超过1000家，包括秦始皇帝陵博物院、雁荡山、华清宫、白水洋、鸳鸯溪、金佛山、天柱山、天目湖、台儿庄古城等一大批5A级景区。</p>
+						{:getArticle(27)['content']}
 					</div>
-					<img src="images/system/company.jpg" class="about-company-image" />
+					<img src="/static/home/images/system/company.jpg" class="about-company-image" />
 					<div class="about-company-contact">
-						<p>联系电话：<span class="red-text">400-1078-978</span></p>
-						<p>邮箱：<span class="red-text">12a31235@jygj.com</span></p>
-						<p>地址：<span class="red-text">上海市A某某区某某路某某号</span></p>
+						<p>{$config['tel']['name']}：<span class="red-text">{$config['tel']['val']}</span></p>
+						<p>{$config['email']['name']}：<span class="red-text">{$config['email']['val']}</span></p>
+						<p>{$config['address']['name']}：<span class="red-text">{$config['address']['val']}</span></p>
 					</div>
 				</div>
 			</div>			
 		</div>
-		<!--footer-->
-		<div class="footer">
-			<div class="w1200 fn-clear">
-				<div class="footer-con">
-					<div class="footer-title">
-						公司新闻
-						<a href="javascript:;" class="footer-title-more">更多 ></a>
-					</div>
-					<div class="footer-news">
-						<a href="javascript:;" class="footer-new">08/16 恭喜景运管家获得数千万融资</a>
-						<a href="javascript:;" class="footer-new">08/16 恭喜景运管家获得数千万融资</a>
-						<a href="javascript:;" class="footer-new">08/16 恭喜景运管家获得数千万融资</a>
-						<a href="javascript:;" class="footer-new">08/16 恭喜景运管家获得数千万融资</a>
-					</div>
-					<span class="footer-line"></span>
-				</div>
-				<div class="footer-con footer-con-02">
-					<div class="footer-title">
-						解决方案
-					</div>
-					<div class="footer-news">
-						<a href="javascript:;" class="footer-link">智慧景区</a>
-						<a href="javascript:;" class="footer-link">主题公园</a>
-						<a href="javascript:;" class="footer-link">展览展会</a>
-						<a href="javascript:;" class="footer-link">全域旅游</a>
-					</div>
-					<span class="footer-line"></span>
-				</div>
-				<div class="footer-con footer-con-03">
-					<div class="footer-title">
-						友情链接
-					</div>
-					<div class="footer-news">
-						<a href="javascript:;" class="footer-link">国家文化旅游部</a>
-						<a href="javascript:;" class="footer-link">重庆市文化旅游局</a>
-					</div>
-					<span class="footer-line"></span>
-				</div>
-				<div class="footer-con footer-con-04">
-					<div class="footer-title">
-						联系我们
-					</div>
-					<div class="footer-news">
-						<p class="footer-new">客服专线：400-1234-567</p>
-						<p class="footer-new">客服邮箱：123456@jygj.com</p>
-						<p class="footer-addr">地址：上海市金山区廊下镇景乐路228
-      						<p>　　　号7幢N299室</p>
-						</p>
-					</div>
-				</div>
-				<div class="footer-ewm">
-					<img src="images/system/ewm.jpg" class="footer-ewm-image" />
-					<p>扫码关注微信公众号</p>
-				</div>
-			</div>
-			<div class="footer-copy">Copyright ©2013-2018 上海微奥信息科技有限公司 版权所有 沪ICP备15054606号-3</div>
-		</div>
-		<!--footer end-->
-		<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-		<script type="text/javascript" src="js/slider.js"></script>
-	    <script type="text/javascript">
-		$(document).ready(function() {
-			//鼠标悬浮在导航上下拉
-			$('.nav-li').hover(function(){
-				var _this =$(this);
-				if($(_this).hasClass('active')){
-					return false;
-				}else{
-					$('.nav-li.active').removeClass('active');
-					$(_this).addClass('active');
-					$('.second-links').stop().slideUp();
-					$(_this).find('.second-links').stop().slideDown();
-				}
-				
-			});
-			$('.second-links').hover(function(){
-				
-			},function(){
-				$(this).stop().slideUp();
-			});
-			
-		});
-		</script>
-	</body>
-</html>
+{/block}
+{block name="js"}
+{/block}

@@ -1,0 +1,121 @@
+{extend name="layout/layout"}
+{block name="css"}
+{load href="/static/common/ue/themes/default/css/umeditor.css"}
+{/block}
+{block name="content"}
+    <ol class="breadcrumb pull-left">
+        <li><a href="javascript:;">Home</a></li>
+        <li class="active">{$title}</li>
+    </ol>
+    <!-- end breadcrumb -->
+    <!-- begin page-header -->
+    <h1 class="page-header">
+        <small>
+            <button class="btn btn-primary pull-right m-l-20" type="button" onclick=" javascript:history.go(-1) ">返回列表</button>
+        </small>
+    </h1>
+    <div class="row">
+        <!-- begin col-12 -->
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse">
+                <div class="panel-heading">
+                    <h4 class="panel-title">{$title}</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <form action="/index.php/admin/article/addOrEditDo" class="form-horizontal form_need_validate" role="form" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="id" value="{$data.id ? $data.id:''}">
+                            <input type="hidden" name="type" value="{$type ? $type : '1' }">
+                            <div class="form-group">
+                                <label for="title" class="col-xs-4 control-label">标题<font color="red">*</font></label>
+                                <div class="col-xs-5">
+                                    <input type="text" class="form-control" id="title" name="title" value="{$data.title ? $data.title:''}" placeholder="请输入标题" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label  class="col-xs-4 control-label">文章分类<font color="red">*</font></label>
+                                <div class="col-xs-5">
+                                    {:buildSelect($catData,'cat_id','id','name',isset($data['cat_id']) ? $data['cat_id']:'')}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label  class="col-xs-4 control-label">所属栏目<font color="red">*</font></label>
+                                <div class="col-xs-5">
+                                    {:buildSelect($navData,'nav_id','id','name',isset($data['nav_id']) ? $data['nav_id']:'')}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-4 control-label">内容描述<font color="red">*</font></label>
+                                <div class="col-xs-5">
+                                    <textarea class="form-control" id="description" name="description" value="" placeholder="请输入内容描述" required>
+                                        {$data.description ? $data.description:''}
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="sort" class="col-xs-4 control-label">排序</label>
+                                <div class="col-xs-5">
+                                    <input type="number" class="form-control" id="sort" name="sort" value="{$data.sort ? $data.sort:''}" placeholder="请输入排序,值越大,越靠前" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-4 control-label">缩略图<font color="red">*</font></label>
+                                <div class="col-xs-5">
+                                    <div id="image-preview" style="border: 1px solid #ccc; width:100px; height: 100px; background: rgb(222, 222, 222)">
+                                        <img id="img" src="{$data['img'] ? $data['img']:''}" alt="" style="width:100px; height: 100px;">
+                                    </div>
+                                    <p>
+                                        <a href="javascript:;" class="file">
+                                            <input type="file" id="image-file" name="pic" value="{$data['img'] ? $data['img']:''}">
+                                        </a>
+                                    </p>
+                                    <p id="file-info"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="content" class="col-xs-3 control-label">文章内容<font color="red">*</font></label>
+                                <div class="col-xs-5">
+                                     <textarea id="content" name="content" >
+                                         {$data['content'] ? $data['content']:""}
+                                     </textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-offset-5" >
+                                <button type="submit" class="btn btn-success m-2" id="submit" name="repass">提交</button>
+                                <button type="reset" class="btn btn-success m-2" id="reset" name="repass">重置</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>s
+            <!-- end panel -->
+        </div>
+        <!-- end col-12 -->
+    </div>
+{/block}
+
+{block name="js"}
+<!--文本编辑器-->
+
+{load href="/static/admin/js/kindeditor-4.1.10/kindeditor.js"}
+{load href="/static/admin/js/kindeditor-4.1.10/lang/zh_CN.js"}
+<!--{load href="/static/common/ue/umeditor.config.js"}-->
+<!--{load href="/static/common/ue/umeditor.js"}-->
+<!--{load href="/static/common/ue/lang/zh-cn/zh-cn.js"}-->
+{load href="/static/common/upload.js"}
+<script>
+    $(function () {
+        $("select option[value='']").eq(0).text('默认分类');
+        $("select option[value='']").eq(1).text('默认栏目');
+        $("select option[value='']").val(0);
+        upload.init();
+        <!-- 实例化编辑器代码 -->
+        create_editer('#content',{
+            'uploadJson': '?m=Admin/upload/uploadImg',
+            'minWidth': '800'
+        });
+    });
+</script>
+{/block}
