@@ -27,6 +27,10 @@ class LoginController extends Controller
         if(!$data){
             $this->error('参数缺失！');
         }
+        if(!captcha_check($data['captcha'])){
+            //验证失败
+            $this->error('验证码错误！');
+        };
         $userInfo = db('t_admin')->where(['name'=>$data['name'],'password'=>md5('JYGJ'.$data['password'])])->find();
         if($userInfo){
             session('admin',$userInfo);

@@ -251,4 +251,17 @@ return [
         404 => APP_PATH.'common'.DS.'views'.DS.'404'.DS.'404.html',
         // 还可以定义其它的HTTP status
     ],
+
+    'captcha'  => [
+        // 验证码字体大小(px)
+        'fontSize' => 25,
+        // 是否画混淆曲线
+        'useCurve' => true,
+        // 是否添加复点
+        'useNoise' => true,
+        // 验证码位数
+        'length'   => 4,
+        // 验证成功后是否重置
+        'reset'    => true,
+    ],
 ];
